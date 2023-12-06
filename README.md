@@ -1,2 +1,1 @@
-# e-commerce-db
- 
+# E-commerce Back End Starter Code
