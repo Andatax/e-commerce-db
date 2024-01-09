@@ -6,26 +6,26 @@ class ProductTag extends Model {}
 
 ProductTag.init(
 	{
-		id: {
+		productTagId: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true,
 		},
-		product_id: {
+		productId: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			references: {
 				model: "product",
-				key: "id",
+				key: "prpductId",
 			},
 		},
-		tag_id: {
+		tagId: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			references: {
 				model: "tag",
-				key: "id",
+				key: "tagId",
 			},
 		},
 	},
@@ -34,7 +34,7 @@ ProductTag.init(
 		timestamps: false,
 		freezeTableName: true,
 		underscored: true,
-		modelName: "product_tag",
+		modelName: "productTag",
 	}
 );
 
