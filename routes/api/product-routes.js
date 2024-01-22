@@ -92,7 +92,7 @@ router.put("/:id", (req, res) => {
 							return {
 								product_id: req.params.id,
 								tag_id,
-							};
+							};``
 						});
 
 					// figure out which ones to remove
@@ -120,11 +120,11 @@ router.delete("/:id", async (req, res) => {
 	try {
 		const productData = await Product.destroy({
 			where: {
-				id: req.body.id,
+				id: req.params.id,
 			},
 		});
 
-		if (!projectData) {
+		if (!productData) {
 			res.status(404).json({ message: "Product not found" });
 			return;
 		}
@@ -137,3 +137,4 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
+``;

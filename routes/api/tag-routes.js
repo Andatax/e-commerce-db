@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
 		});
 		res.status(200).json(tagData);
 	} catch (err) {
-    console.log(err);
+		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -29,7 +29,7 @@ router.get("/:id", async (req, res) => {
 				},
 			],
 		});
-		const tag = tagData.get({ plain: true });
+		res.status(200).json(tagData);
 	} catch (err) {
 		res.status(500).json(err);
 		console.log(err);
@@ -66,7 +66,7 @@ router.put("/:id", async (req, res) => {
 			}
 		);
 
-		if (!projectData) {
+		if (!tagData) {
 			res.status(404).json({ message: "Tag not found" });
 			return;
 		}
@@ -83,11 +83,11 @@ router.delete("/:id", async (req, res) => {
 	try {
 		const tagData = await Tag.destroy({
 			where: {
-				id: req.body.id,
+				id: req.params.id,
 			},
 		});
 
-		if (!projectData) {
+		if (!tagData) {
 			res.status(404).json({ message: "Tag not found" });
 			return;
 		}

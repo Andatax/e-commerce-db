@@ -29,7 +29,7 @@ router.get("/:id", async (req, res) => {
 				},
 			],
 		});
-		const category = categoryData.get({ plain: true });
+		res.status(200).json(categoryData);
 	} catch (err) {
 		res.status(500).json(err);
 		console.log(err);
@@ -57,7 +57,7 @@ router.put("/:id", async (req, res) => {
 	try {
 		const categoryData = await Category.update(
 			{
-				category_name: req.body.category_name,
+				category_name: req.params.category_name,
 			},
 			{
 				where: {
@@ -66,7 +66,7 @@ router.put("/:id", async (req, res) => {
 			}
 		);
 
-		if (!projectData) {
+		if (!categoryData) {
 			res.status(404).json({ message: "Category not found" });
 			return;
 		}
@@ -83,7 +83,7 @@ router.delete("/:id", async (req, res) => {
 	try {
 		const categoryData = await Category.destroy({
 			where: {
-				id: req.body.id,
+				id: req.params.id,
 			},
 		});
 
